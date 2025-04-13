@@ -1,0 +1,34 @@
+/* styles/tailwind.css */
+@import "tailwindcss";
+
+@theme {
+  /* Font Family */
+  --font-family-sans: "Poppins", sans-serif;
+  
+  /* Colors */
+  --color-primary: 247 186 52;
+  --color-secondary: 105 167 156;
+  --color-light: 247 247 247;
+  --color-dark: 51 51 51;
+  --color-dark2: 153 153 153;
+  
+  /* Container */
+  --size-container-padding: 1rem;
+  --size-container-padding-sm: 2rem;
+  --size-container-padding-lg: 4rem;
+  --size-container-padding-xl: 5rem;
+  --size-container-padding-2xl: 6rem;
+}
+
+@layer base {
+  :root {
+    --color-text-primary: var(--color-dark);
+    --color-text-secondary: var(--color-dark2);
+    --color-bg-primary: var(--color-light);
+    --color-bg-secondary: var(--color-white);
+  }
+}
+
+  
+
+
