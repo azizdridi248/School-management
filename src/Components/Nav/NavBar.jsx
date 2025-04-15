@@ -52,7 +52,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="relative z-20 flex items-center justify-between px-6 py-4 bg-white shadow-md dark:bg-gray-900 dark:text-white">
+    <nav className="relative z-20 flex items-center justify-between px-6 py-4 bg-cyan-700 shadow-md">
       {/* Logo */}
       <motion.div 
         className="flex items-center"
@@ -61,15 +61,16 @@ const Navbar = () => {
         transition={{ duration: 0.5 }}
       >
         <img src={logo} alt="logo" className="h-12 w-auto" />
+        <span className="ml-2 text-2xl font-bold text-white">EniConnect</span>
       </motion.div>
 
       {/* Desktop Menu */}
-      <div className="hidden lg:flex items-center space-x-6">
+      <div className="hidden lg:flex items-center space-x-8">
         {NavbarMenu.map((menu, i) => (
           <motion.a
             key={menu.id}
             href={menu.link}
-            className="relative group text-gray-600 dark:text-gray-300 hover:text-blue-500 transition-colors font-medium"
+            className="relative group text-white hover:text-blue-400 transition-colors font-medium"
             custom={i}
             initial="hidden"
             animate="visible"
@@ -78,7 +79,7 @@ const Navbar = () => {
           >
             {menu.title}
             <motion.span 
-              className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-500"
+              className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-400"
               whileHover={{ width: "100%" }}
               transition={{ duration: 0.3 }}
             />
@@ -86,12 +87,15 @@ const Navbar = () => {
         ))}
 
         <motion.button 
-          className="ml-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-5 rounded-full shadow-sm"
-          whileHover={{ scale: 1.05, boxShadow: "0 4px 12px rgba(59, 130, 246, 0.5)" }}
+          className="ml-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 px-6 rounded-full shadow-sm"
+          whileHover={{ 
+            scale: 1.05, 
+            boxShadow: "0 4px 12px rgba(37, 99, 235, 0.5)" 
+          }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 17 }}
         >
-          Sign In
+          Start
         </motion.button>
       </div>
 
@@ -102,12 +106,12 @@ const Navbar = () => {
       >
         {isMobileMenuOpen ? (
           <IoMdClose 
-            className="text-3xl text-gray-600 dark:text-gray-300 cursor-pointer"
+            className="text-3xl text-white cursor-pointer"
             onClick={toggleMobileMenu}
           />
         ) : (
           <IoMdMenu 
-            className="text-3xl text-gray-600 dark:text-gray-300 cursor-pointer"
+            className="text-3xl text-white cursor-pointer"
             onClick={toggleMobileMenu}
           />
         )}
@@ -117,7 +121,7 @@ const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-gray-900 shadow-lg overflow-hidden"
+            className="lg:hidden absolute top-full left-0 right-0 bg-gray-900 shadow-lg overflow-hidden"
             initial="hidden"
             animate="visible"
             exit="exit"
@@ -128,7 +132,7 @@ const Navbar = () => {
                 <motion.a
                   key={menu.id}
                   href={menu.link}
-                  className="text-gray-600 dark:text-gray-300 hover:text-blue-500 font-medium py-2"
+                  className="text-white hover:text-blue-400 font-medium py-2"
                   custom={i}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ 
@@ -143,7 +147,7 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <motion.button 
-                className="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-5 rounded-full shadow-sm w-full"
+                className="mt-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 px-5 rounded-full shadow-sm w-full"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ 
                   opacity: 1, 
@@ -154,7 +158,7 @@ const Navbar = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Sign In
+                Start
               </motion.button>
             </div>
           </motion.div>
