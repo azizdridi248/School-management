@@ -74,7 +74,7 @@ const LoginPage = () => {
           break;
         case 'student':
           console.log('Navigating to /students');
-          navigate('/student', { replace: true });
+          navigate('/student/dash', { replace: true });
           break;
         default:
           console.log('Navigating to /');

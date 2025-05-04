@@ -16,6 +16,7 @@ import TeacherProfile from './Components/Dashboard/TeacherProfile.jsx';
 import TeacherList from './Components/Dashboard/TeacherList.jsx';
 import CourseList from './Components/Dashboard/CourseList.jsx';
 import ExamList from './Components/Dashboard/ExamList.jsx';
+import StudentMain from './Components/Dashboard/StudentMain.jsx';
 
 // Layout components
 const DashboardLayout = () => {
@@ -88,32 +89,41 @@ const router = createBrowserRouter([
     ],
   },
   // Student routes
-  {
-    path: '/student',
-    element: (
-      <PrivateRoute requiredRole="student">
-        <StudentDashboard />
-      </PrivateRoute>
-    ),
-    children: [
-      {
-        index: true,
-        element: <StudentDashboard />,
-      },
-      {
-        path: 'teachers',
-        element: <TeacherList />,
-      },
-      {
-        path: 'courses',
-        element: <CourseList />,
-      },
-      {
-        path: 'exam',
-        element: <ExamList />,
-      },
-    ],
-  },
+ // Student routes
+{
+  path: '/student',
+  element: (
+    <PrivateRoute requiredRole="student">
+      <StudentDashboard />
+    </PrivateRoute>
+  ),
+  children: [
+    {
+      index: true,
+      element: <Navigate to="/student/dash" replace />, // Redirect to /student/dash
+    },
+    {
+      path: 'dash',
+      element: (
+        <StudentMain
+          studentName="Dridi Mohamed Aziz"
+        />
+      ),
+    },
+    {
+      path: 'teachers',
+      element: <TeacherList />,
+    },
+    {
+      path: 'courses',
+      element: <CourseList />,
+    },
+    {
+      path: 'exam',
+      element: <ExamList />,
+    },
+  ],
+},
   // Public routes
   {
     path: '/teachers',

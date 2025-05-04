@@ -13,7 +13,7 @@ const StudentDashboard = () => {
   };
 
   const sidebarLinks = [
-    { name: 'Dashboard', icon: <FaHome className="mr-3" />, path: '/tudentss' },
+    { name: 'Dashboard', icon: <FaHome className="mr-3" />, path: '' },
     { name: 'Teachers', icon: <FaChalkboardTeacher className="mr-3" />, path: 'teachers' },
     { name: 'Courses', icon: <FaBookOpen className="mr-3" />, path: 'courses' },
     { name: 'Exams', icon: <FaFileAlt className="mr-3" />, path: 'exam' },
