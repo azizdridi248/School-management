@@ -73,8 +73,8 @@ const LoginPage = () => {
           navigate('/teacher', { replace: true });
           break;
         case 'student':
-          console.log('Navigating to /student');
-          navigate('/student', { replace: true });
+          console.log('Navigating to /students');
+          navigate('/studentsid', { replace: true });
           break;
         default:
           console.log('Navigating to /');

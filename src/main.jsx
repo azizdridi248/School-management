@@ -79,7 +79,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/students',
+    path: '/studentsid',
     element: (
       <PrivateRoute requiredRole="student">
         <StudentDashboard />
