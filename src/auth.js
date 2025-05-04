@@ -1,43 +1,35 @@
-// Mock authentication service
 const users = {
-    admin: [
-      { username: 'admin1', password: 'admin123', name: 'Admin User' }
-    ],
-    teacher: [
-      { username: 'teacher1', password: 'teacher123', name: 'John Smith' },
-      { username: 'teacher2', password: 'teacher123', name: 'Sarah Johnson' }
-    ],
-    student: [
-      { username: 'student1', password: 'student123', name: 'Alex Brown' },
-      { username: 'student2', password: 'student123', name: 'Maria Garcia' }
-    ]
-  };
-  
-// Simple auth implementation
-export const isAuthenticated = () => {
-  // Check if authToken exists and hasn't expired
-  const token = localStorage.getItem('authToken');
-  if (!token) return false;
-  
-  // You might want to add JWT expiration check here
-  return true;
+  admin: [{ username: 'admin1', password: 'admin123', name: 'Admin User' }],
+  teacher: [
+    { username: 'teacher1', password: 'teacher123', name: 'John Smith' },
+    { username: 'teacher2', password: 'teacher123', name: 'Sarah Johnson' }
+  ],
+  student: [
+    { username: 'student1', password: 'student123', name: 'Alex Brown' },
+    { username: 'student2', password: 'student123', name: 'Maria Garcia' }
+  ]
 };
 
-// Mock login function - replace with your actual API call
 export const authenticate = async (credentials, role) => {
-  // In a real app, you would call your authentication API here
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
-      // Mock successful authentication
-      localStorage.setItem('authToken', 'mock-token-123');
-      localStorage.setItem('userRole', role);
-      localStorage.setItem('userData', JSON.stringify({
-        username: credentials.username,
-        name: `${role} User`
-      }));
-      resolve(true);
+      const userList = users[role] || [];
+      const user = userList.find(u => 
+        u.username === credentials.username && 
+        u.password === credentials.password
+      );
+      
+      if (user) {
+        resolve({ ...user, role });
+      } else {
+        reject(new Error('Invalid credentials. Please try again.'));
+      }
     }, 500);
   });
+};
+
+export const isAuthenticated = () => {
+  return localStorage.getItem('authToken') !== null;
 };
 
 export const logout = () => {

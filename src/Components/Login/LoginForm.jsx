@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const LoginForm = ({ role, onSubmit, onBack }) => {
+const LoginForm = ({ role, onSubmit, onBack, isLoading }) => {
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''
@@ -49,6 +49,7 @@ const LoginForm = ({ role, onSubmit, onBack }) => {
             placeholder="Username"
             value={credentials.username}
             onChange={handleChange}
+            disabled={isLoading}
           />
         </div>
         <div>
@@ -62,6 +63,7 @@ const LoginForm = ({ role, onSubmit, onBack }) => {
             placeholder="Password"
             value={credentials.password}
             onChange={handleChange}
+            disabled={isLoading}
           />
         </div>
       </div>
@@ -71,15 +73,17 @@ const LoginForm = ({ role, onSubmit, onBack }) => {
           type="button"
           onClick={onBack}
           className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          disabled={isLoading}
         >
           Back
         </button>
         
         <button
           type="submit"
-          className="group relative w-1/2 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="group relative w-1/2 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-blue-400"
+          disabled={isLoading}
         >
-          Sign in
+          {isLoading ? 'Signing in...' : 'Sign in'}
         </button>
       </div>
     </form>

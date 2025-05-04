@@ -20,6 +20,28 @@ const AdminDashboard = () => {
       icon: <FiUsers className="text-2xl" />,
       description: "Create rich course content and coaching products for your students. When you give them a pricing plan, they'll appear on your site!",
     },
+    {
+      title: "Delete students",
+      icon: <FiUsers className="text-2xl" />,
+      description: "Create rich course content and coaching products for your students. When you give them a pricing plan, they'll appear on your site!",
+    },
+    {
+      title: "Delete Teacher",
+      icon: <GiTeacher className="text-2xl" />,
+      description: "Create rich course content and coaching products for your students. When you give them a pricing plan, they'll appear on your site!",
+    },
+    {
+      title: "Delete Admin",
+      icon: <FiUsers className="text-2xl" />,
+      description: "Create rich course content and coaching products for your students. When you give them a pricing plan, they'll appear on your site!",
+    },
+    {
+      title: "Show All Admin",
+      icon: <FiUsers className="text-2xl" />,
+      description: "Create rich course content and coaching products for your students. When you give them a pricing plan, they'll appear on your site!",
+    },
+
+
   ];
 
   return (

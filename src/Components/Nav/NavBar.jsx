@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 import logo from "../../assets/logoEni.png";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from 'react-router-dom';
 
 const NavbarMenu = [
   { id: 1, title: "Home", path: "/" },
@@ -13,9 +14,14 @@ const NavbarMenu = [
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleStartClick = () => {
+    navigate('/login'); // Navigate to /login route
   };
 
   const menuVariants = {
@@ -88,6 +94,7 @@ const Navbar = () => {
 
         <motion.button 
           className="ml-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 px-6 rounded-full shadow-sm"
+          onClick={handleStartClick} // Trigger navigation to /login
           whileHover={{ 
             scale: 1.05, 
             boxShadow: "0 4px 12px rgba(37, 99, 235, 0.5)" 
@@ -148,6 +155,7 @@ const Navbar = () => {
               ))}
               <motion.button 
                 className="mt-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 px-5 rounded-full shadow-sm w-full"
+                onClick={handleStartClick} // Trigger navigation to /login
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ 
                   opacity: 1, 

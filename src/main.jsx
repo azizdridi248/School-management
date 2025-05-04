@@ -6,10 +6,9 @@ import StudentDashboard from './Components/Dashboard/StudentDashboard.jsx';
 import AdminDashboard from './Components/Dashboard/AdminDashboard.jsx';
 import LoginPage from './Components/Pages/LoginPage.jsx';
 import { Navigate } from 'react-router-dom';
-import Courses from './Components/Dashboard/Courses.jsx'
-import Exam from './Components/Dashboard/Exam.jsx'
-
-import App from './App.jsx'
+import Courses from './Components/Dashboard/Courses.jsx';
+import Exam from './Components/Dashboard/Exam.jsx';
+import App from './App.jsx';
 import Student from './Components/Dashboard/StudentAdmin.jsx';
 import Teacher from './Components/Dashboard/TeacherAdmin.jsx';
 import TeacherProfile from './Components/Dashboard/TeacherProfile.jsx';
@@ -37,59 +36,59 @@ const NotFound = () => <h2>404 - Page Not Found</h2>;
 const router = createBrowserRouter([
   {
     path: '/teachers',
-    element: <Teacher />, // Login page is standalone
+    element: <Teacher />,
   },
-
-  {path:"/teachers/:id", element :<TeacherProfile /> },
+  {
+    path: '/teachers/:id',
+    element: <TeacherProfile />,
+  },
   {
     path: '/exam',
-    element: <Exam />, // Login page is standalone
+    element: <Exam />,
   },
   {
     path: '/student',
-    element: <Student />, // Login page is standalone
+    element: <Student />,
   },
-
   {
     path: '/login',
-    element: <LoginPage />, // Login page is standalone
+    element: <LoginPage />,
   },
   {
-    path : '/',
-    element : <App />
-
+    path: '/',
+    element: <App />,
   },
   {
-    path : '/courses',
-    element : <Courses />
-
-  },
-  {
-    path: '/teacher',
-    element: (
-  
-        <TeacherDashboard />
-
-    ),
-  },
-  {
-    path: '/student',
-    element: (
-      
-        <StudentDashboard />
-      
-    ),
+    path: '/courses',
+    element: <Courses />,
   },
   {
     path: '/admin',
     element: (
-    
+      <PrivateRoute requiredRole="admin">
         <AdminDashboard />
+      </PrivateRoute>
     ),
   },
   {
-    path: '*', // Catch-all route for undefined paths
-    element: <NotFound />, // Show 404 for undefined paths
+    path: '/teacher',
+    element: (
+      <PrivateRoute requiredRole="teacher">
+        <TeacherDashboard />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: '/students',
+    element: (
+      <PrivateRoute requiredRole="student">
+        <StudentDashboard />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: '*',
+    element: <NotFound />,
   },
 ]);
 
