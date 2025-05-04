@@ -39,7 +39,7 @@ const Sidebar = () => {
   const menuItems = [
     { name: "Home", icon: FiHome, path: "/admin" },
     { name: "Courses", icon: FiBook, path: "/courses" },
-    { name: "Students", icon: FiUsers, path: "/student" },
+    { name: "Students", icon: FiUsers, path: "/students" },
     { name: "Teachers", icon: GiTeacher, path: "/teachers" },
     { name: "Exam", icon: MdAssignment, path: "/exam" },
     { name: "Settings", icon: FiSettings, path: "/settings" },
